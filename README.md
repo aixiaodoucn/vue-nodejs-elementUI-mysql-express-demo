@@ -1,7 +1,45 @@
 # vue-nodejs-elementUI-mysql-express-demo
 vue+nodejs前后端分离项目，学习使用，包含基本的入门操作
 
+项目预览地址： [预览地址-aixiaodou.cn](http://www.aixiaodou.cn:8080)
 
+
+
+##### 数据库地址：express-demo/doc/demo2.sql
+
+MySQL数据库
+
+数据库为 demo2
+
+创建demo2数据库>运行sql语句
+
+修改 express-demo 项目中 model/connDb.js 数据库连接配置
+
+#### express-demo-web: 前端web项目
+
+```shell
+# 安装依赖
+npm install
+
+# 运行项目
+npm run dev
+```
+
+
+
+#### express-demo：后端nodejs项目
+
+```shell
+# 安装依赖
+npm install
+
+# 运行项目
+npm start
+```
+
+
+
+<hr>
 
 ### 本项目为入门项目，采用前（vue）后（nodejs）端分离模式
 
@@ -24,6 +62,10 @@ vue+nodejs前后端分离项目，学习使用，包含基本的入门操作
 
 
 
+<hr>
+
+
+
 ### V 1.0.1 实现基本功能（1-4 项）——主要记录一些遇到的问题
 
 ##### 前端
@@ -39,6 +81,10 @@ vue+nodejs前后端分离项目，学习使用，包含基本的入门操作
 
 1. nginx部署vue项目后，正常访问没问题，刷新就会出现404的问题 [解决办法](https://blog.csdn.net/qq_32442967/article/details/103389376)
 2. nodejs在linux中持久运行使用可forever [参考链接](https://blog.csdn.net/qq_32442967/article/details/103390306)
+
+
+
+<hr>
 
 
 
