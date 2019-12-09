@@ -1,11 +1,11 @@
 # vue-nodejs-elementUI-mysql-express-demo
-vue+nodejs前后端分离项目，学习使用，包含基本的入门操作
+vue+nodejs前后端分离项目，学习使用，包含基本的入门操作。包括从开始创建项目到最后部署的实现过程及过程中遇到的一些问题整理。
 
 项目预览地址： [预览地址-aixiaodou.cn](http://www.aixiaodou.cn:8080)
 
 
 
-##### 数据库地址：express-demo/doc/demo2.sql
+#### 数据库地址：express-demo/doc/demo2.sql
 
 MySQL数据库
 
@@ -68,19 +68,19 @@ npm start
 
 ### V 1.0.1 实现基本功能（1-4 项）——主要记录一些遇到的问题
 
-##### 前端
+#### 前端
 
 1. 控制页面是否登录才可访问：根据token来判断是否有登录，配置 router [参考链接](https://blog.csdn.net/qq_32442967/article/details/103312317)
 2. 将登录后获取的userId存到localstorage，在获取用户信息是带上userId获取登录用户信息，显示右上角头像
 
-##### 后端
+#### 后端
 
 1. nodejs连接mysql数据库,如果使用了连接池，一定要在使用完释放连接，否则会造成超过最大连接数 [参考链接](https://blog.csdn.net/qq_32442967/article/details/103349601/)
 
-##### 部署
+#### 部署
 
 1. nginx部署vue项目后，正常访问没问题，刷新就会出现404的问题 [解决办法](https://blog.csdn.net/qq_32442967/article/details/103389376)
-2. nodejs在linux中持久运行使用可forever [参考链接](https://blog.csdn.net/qq_32442967/article/details/103390306)
+2. nodejs在linux中持久运行使用了forever [参考链接](https://blog.csdn.net/qq_32442967/article/details/103390306)
 
 
 
@@ -90,24 +90,24 @@ npm start
 
 ### V 1.0.0 创建前后端项目
 
-##### 前端
+#### 前端
 
 1. 使用vue-cli+ webpack生成vue项目
 2. 配置router，store，utils，axios，elementUI，端口号...
 
-##### 后端
+#### 后端
 
 1. 使用express生成nodejs项目 [参考链接](http://www.expressjs.com.cn/)
 2. 安装 jsonwebtoken 依赖包，生成token，在登录成功后返回前端 [参考链接](https://blog.csdn.net/qq_32442967/article/details/103316307)
 3. 安装 mysql 数据库依赖包
 
-##### 解决前后端分离项目跨域问题（设置请求头） [参考链接](https://blog.csdn.net/qq_32442967/article/details/103344373)
+#### 解决前后端分离项目跨域问题（设置请求头） [参考链接](https://blog.csdn.net/qq_32442967/article/details/103344373)
 
 - 前端：axios中request 拦截器，设置sessionToken，作为后端校验使用，判断是否为允许的服务器
 - 后端：在app.js中设置请求头 - 加入app.all()
 - 后端：由于自定义了请求头 sessionToken ，为复杂跨域请求，就会有一次options预请求，对method为options的请求快速处理返回200
 
-##### 数据库
+#### 数据库
 
 1. 创建数据库>表【user, tools_down, friend_link】
 2. 模拟测试数据
