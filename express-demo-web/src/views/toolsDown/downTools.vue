@@ -7,7 +7,6 @@
 <!--        工具详情-->
         <div class="starter-template" v-for="list in t.toolList" :key="list.tool_id">
           <label>{{list.tool_name}}</label>
-<!--          <a class="span_a" v-if="list.tool_url_type === '0'" :href="downUrl+ list.tool_url">下载-->
           <span class="span_down" v-if="list.tool_url_type === '0'" @click="downToolsFun(downUrl+ list.tool_url)">下载
             <i :class="iconClass"/></span>
           <a class="span_down" v-if="list.tool_url_type === '1'" target="_blank" :href="list.tool_url">打开

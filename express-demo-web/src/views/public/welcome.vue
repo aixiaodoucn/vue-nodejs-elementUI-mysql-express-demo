@@ -1,8 +1,18 @@
 <template>
   <div>
     <el-card>
-     欢迎您！
-      <el-link :underline="false" style="color: #c261f5" target="_blank" href="https://blog.csdn.net/qq_32442967" icon="el-icon-paperclip">项目编写过程中遇到的主要问题记录</el-link>
+     <h4>欢迎您！</h4>
+      <div class="pub-link">
+        <div>
+          <el-link :underline="false" style="color: #c261f5" target="_blank" href="https://blog.csdn.net/qq_32442967" icon="el-icon-paperclip">CSDN -- 项目编写过程中遇到的主要问题记录</el-link>
+        </div>
+        <div>
+          <el-link :underline="false" style="color: #c261f5" target="_blank" href="https://blog.csdn.net/qq_32442967/article/details/103459148" icon="el-icon-bell">CSDN -- 建议评论地址</el-link>
+        </div>
+        <div>
+          <el-link :underline="false" style="color: #c261f5" target="_blank" href="https://github.com/zshuai34/vue-nodejs-elementUI-mysql-express-demo" icon="el-icon-ship">github -- 项目下载地址</el-link>
+        </div>
+      </div>
     </el-card>
     <el-card>
       <div slot="header" class="clearfix">
@@ -99,6 +109,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.pub-link
+  .el-link
+    line-height 40px
 .el-card{
   margin-bottom 15px
 }
