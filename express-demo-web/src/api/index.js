@@ -28,8 +28,16 @@ export default {
   getUserInfo (params) {
     return post('/users/user_info', params)
   },
+  /**
+   * 工具
+   * @param params
+   * @returns {*}
+   */
   postToolList (params) {
     return post('/tools/tools_list', params)
+  },
+  postDownCount (params) {
+    return post('/tools/down_count', params)
   },
   postFriendLink (params) {
     return post('/publicRouter/friend_link', params)
