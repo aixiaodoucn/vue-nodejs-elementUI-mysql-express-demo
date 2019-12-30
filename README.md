@@ -61,7 +61,7 @@ npm start
 2. login、register 登录、注册、退出登录模块：首页&工具下载页面可无登录预览，用户列表页面登录后可见。
    将 sessionToken 存到 cookie 中，登录后的 userId 存到 localstorage 中。
    根据是否登录来显示右上角为登录还是头像。
-3. userManage 用户列表模块：分页，模糊搜索
+3. userManage 用户列表模块：分页，模糊搜索, 用户编辑、删除功能
 4. friend_link 友情链接接口：将友链和备案信息放到数据库中
 
 
