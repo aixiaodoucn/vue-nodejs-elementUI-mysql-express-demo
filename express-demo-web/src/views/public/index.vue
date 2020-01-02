@@ -3,13 +3,14 @@
     <div class="top-header">
       <ul class="header-left">
         <li class="header-item" @click="toWelcome">首页</li>
-        <li class="header-item" @click="toToolsDown">工具下载</li>
+        <li class="header-item" @click="toToolsDown">软件下载</li>
         <div class="right-menu">
           <div class="r-menu-item" @click="changeLoginPanel(true)" v-if="!isLogin">登录</div>
           <div class="r-menu-item" v-if="isLogin">
             <el-dropdown placement="bottom" trigger="click"  @command="handleCommand">
             <span class="el-dropdown-link">
-              <el-avatar :size="40" style="vertical-align: middle" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+              <el-avatar :size="40" style="vertical-align: middle"
+                         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"/>
             </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="self">个人中心</el-dropdown-item>
@@ -22,7 +23,7 @@
       </ul>
     </div>
     <div class="public-container">
-      <router-view></router-view>
+      <router-view/>
     </div>
     <div class="footer">
       <div class="footer-content">
@@ -38,7 +39,7 @@
         <span class="footer-right"><span class="version">V1.0.1</span><span v-for="b in bList" :key="b.fid">{{b.fname}}</span></span>
       </div>
     </div>
-    <login v-show="loginPanel" @changeLoginPanel="changeLoginPanel"></login>
+    <login v-show="loginPanel" @changeLoginPanel="changeLoginPanel"/>
   </div>
 </template>
 

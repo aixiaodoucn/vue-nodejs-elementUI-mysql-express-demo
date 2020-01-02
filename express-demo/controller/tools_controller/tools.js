@@ -5,8 +5,7 @@ var {pool} = require('../../model/connDb');
 module.exports = {
   //  工具列表
   toolsList: function (req, res, next) {
-
-    pool.getConnection(function (err, connection) {
+    pool.getConnection((err, connection) => {
       if (err) {
         req.send({success: false, msg: err.message, retcode: 400})
       }
@@ -29,7 +28,6 @@ module.exports = {
       })
       connection.release(); // 释放连接
     })
-  
   },
 
   // 下载次数

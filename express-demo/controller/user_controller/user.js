@@ -12,7 +12,7 @@ module.exports = {
     let name = reqJson.name.replace(/(^\s*)|(\s*$)/g, "")
     let pageSize = reqJson.pageSize
     let pageNo = reqJson.pageNo
-    
+
     if (token) {
       try {
         // 校验token decode指解码后的信息
@@ -51,12 +51,12 @@ module.exports = {
     }
   },
 
-  // 用户信息
-  user_info: function(req,res,next) {
+  // 用户信息列表
+  userInfo: function(req,res,next) {
     var token=req.headers.sessiontoken // 获取前端请求头发送过来的tokenid
     let reqJson = JSON.parse(req.body.req)
-    let userId = reqJson.userId.replace(/(^\s*)|(\s*$)/g, "") // 去掉首位空格
-  
+    let userId = reqJson.userId
+
     if (token) {
       if (userId === undefined || userId === '') {
         res.send({success: true, msg: '未登录，无用户信息', retcode: 2001})
@@ -90,5 +90,75 @@ module.exports = {
         retcode: 1001
       })
     }
-  } 
+  } ,
+
+  // 修改用户信息列表
+  modifyInfo: function(req,res,next) {
+    var token=req.headers.sessiontoken // 获取前端请求头发送过来的tokenid
+    let reqJson = JSON.parse(req.body.req)
+    if (reqJson.id == '1') {
+      res.json({
+        msg: '管理员不可被修改！',
+        retcode: 2001
+      })
+    } else if (token) {
+      try {
+        // 校验token decode指解码后的信息
+        let decode = verifyToken(token)
+        var $sql = 'UPDATE user SET name = ? ,username = ? WHERE id =  ?';
+        pool.getConnection(function(err, connection){
+          if (err) {
+            return res.send({success: false, msg: err.message, retcode: 400})
+          }
+          connection.query($sql, [reqJson.name, reqJson.username, reqJson.id], function(err, resultList){
+            if (err) {
+              return res.send({success: false, msg: err.message, retcode: 400})
+            }
+            res.json({
+              msg: '修改成功！',
+              retcode: 200
+            })
+          })
+          connection.release(); // 释放连接
+        })
+      } catch {
+        return res.send({success: false, msg: 'token超时，校验失败', retcode: 1001})
+      }
+    }
+  },
+
+  // 删除用户
+  delUser: function(req, res, next) {
+    var token=req.headers.sessiontoken // 获取前端请求头发送过来的tokenid
+    let reqJson = JSON.parse(req.body.req)
+    if (reqJson.id == '1') {
+      res.json({
+        msg: '管理员不可被删除！',
+        retcode: 2001
+      })
+    } else if (token) {
+      try {
+        // 校验token decode指解码后的信息
+        let decode = verifyToken(token)
+        var $sql = 'UPDATE user SET if_deleted = 1 WHERE id =  ?';
+        pool.getConnection(function(err, connection){
+          if (err) {
+            return res.send({success: false, msg: err.message, retcode: 400})
+          }
+          connection.query($sql, [reqJson.id], function(err, resultList){
+            if (err) {
+              return res.send({success: false, msg: err.message, retcode: 400})
+            }
+            res.json({
+              msg: '删除成功！',
+              retcode: 200
+            })
+          })
+          connection.release(); // 释放连接
+        })
+      } catch {
+        return res.send({success: false, msg: 'token超时，校验失败', retcode: 1001})
+      }
+    }
+  }
 }

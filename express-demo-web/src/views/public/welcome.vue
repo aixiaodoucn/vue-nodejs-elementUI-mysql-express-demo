@@ -34,7 +34,7 @@
             将 sessionToken 存到 cookie 中，登录后的 userId 存到 localstorage 中。<br>
             根据是否登录来显示右上角为登录还是头像。
           </li>
-          <li>userManage 用户列表模块：分页，模糊搜索</li>
+          <li>userManage 用户列表模块：分页，模糊搜索，用户修改删除操作</li>
           <li>friend_link 友情链接接口：将友链和备案信息放到数据库中</li>
         </ol>
       </div>

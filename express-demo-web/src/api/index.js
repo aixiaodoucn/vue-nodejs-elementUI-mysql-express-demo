@@ -28,6 +28,12 @@ export default {
   getUserInfo (params) {
     return post('/users/user_info', params)
   },
+  postModifyUserInfo (params) {
+    return post('/users/modify_Info', params)
+  },
+  postDelUser (params) {
+    return post('/users/del_user', params)
+  },
   /**
    * 工具
    * @param params

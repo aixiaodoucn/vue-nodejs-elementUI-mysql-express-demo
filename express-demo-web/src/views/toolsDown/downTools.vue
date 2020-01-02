@@ -6,12 +6,12 @@
         <h3><i :class="t.icon"/>{{t.tName}}</h3>
 <!--        工具详情-->
         <div class="starter-template" v-for="list in t.toolList" :key="list.tool_id">
-          <label class="down-name"><i class="el-icon-coin"></i>{{list.tool_name}}</label>
+          <label class="down-name"><i class="el-icon-coin"/>{{list.tool_name}}</label>
           <span class="down-count">累计下载次数：{{list.down_count}}</span>
-          <span class="span_down" v-if="list.tool_url_type === '0'" @click="downToolsFun(list)">下载
-            <i :class="iconClass"/></span>
-          <a class="span_down" v-if="list.tool_url_type === '1'" target="_blank" :href="list.tool_url">打开
-            <i :class="iconClass"/></a>
+          <span class="span_down" v-if="list.tool_url_type === '0'" @click="downToolsFun(list)">
+            <i :class="iconClass"/>下载</span>
+          <a class="span_down" v-if="list.tool_url_type === '1'" target="_blank" :href="list.tool_url">
+            <i :class="iconClass"/>打开</a>
           <div class="up-date">更新时间：{{list.up_date | formatTime}}</div>
           <p>描述：{{list.tool_describe}}</p>
         </div>
@@ -27,7 +27,7 @@ export default {
   name: 'downTools',
   data () {
     return {
-      iconClass: 'el-icon-paperclip'
+      iconClass: 'el-icon-connection'
     }
   },
   computed: {

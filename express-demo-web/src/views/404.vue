@@ -1,7 +1,9 @@
 <template>
   <div class="cont">
-    <h2>404</h2>
-    <router-link to="/">返回首页</router-link>
+    <el-link :underline="false"  type="primary"  href="/">
+      <img src="../assets/img/404.png" alt="404" title="返回首页">
+      <div><i class="el-icon-arrow-left"/>返回首页</div>
+    </el-link>
   </div>
 </template>
 
@@ -14,4 +16,5 @@ export default {
 <style lang="stylus" scoped>
 .cont
   padding 15px
+  text-align center
 </style>

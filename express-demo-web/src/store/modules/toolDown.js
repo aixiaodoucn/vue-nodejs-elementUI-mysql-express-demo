@@ -4,12 +4,12 @@ const toolDown = {
   namespaced: true,
   state: {
     typeList: [
-      {tName: '推荐工具', icon: 'el-icon-data-line', toolList: []},
-      {tName: '开发工具', icon: 'el-icon-setting', toolList: []},
-      {tName: '网页工具', icon: 'el-icon-monitor', toolList: []},
-      {tName: '下载工具', icon: 'el-icon-bottom-left', toolList: []},
-      {tName: '编辑工具', icon: 'el-icon-edit', toolList: []},
-      {tName: '其它工具', icon: 'el-icon-bicycle', toolList: []}
+      {tName: '推荐软件', icon: 'el-icon-data-line', toolList: []},
+      {tName: '开发软件', icon: 'el-icon-setting', toolList: []},
+      {tName: '网页软件', icon: 'el-icon-monitor', toolList: []},
+      {tName: '下载软件', icon: 'el-icon-bottom-left', toolList: []},
+      {tName: '编辑软件', icon: 'el-icon-edit', toolList: []},
+      {tName: '其它软件', icon: 'el-icon-bicycle', toolList: []}
     ],
     downUrl: 'http://www.aixiaodou.cn/downFiles/'
   },

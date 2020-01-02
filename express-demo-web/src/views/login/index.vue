@@ -1,42 +1,43 @@
 <template>
-  <div class="container">
+  <div class="container"  @keyup.enter="toSubmit">
     <div class="login-content" v-show="loginOrRegister === 'login'">
-      <i class="el-icon-close close-icon" title="关闭" @click="closePanel"></i>
+      <i class="el-icon-close close-icon" title="关闭" @click="closePanel"/>
       <h4 class="title">登录</h4>
       <el-form :model="loginForm" ref="loginForm" :rules="rulesLogin">
         <el-form-item prop="username">
-          <el-input type="text" placeholder="用户名" v-model="loginForm.username" autofocus></el-input>
+          <el-input type="text" placeholder="用户名" v-model="loginForm.username" autofocus/>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input>
+          <el-input type="password" placeholder="密码" v-model="loginForm.password"/>
         </el-form-item>
         <el-form-item style="text-align: center">
           <el-button type="primary" style="width: 100%" @click="toLogin('loginForm')" plain>登录</el-button>
 <!--          <el-link type="info" :underline="false" style="float: right;" @click="loginOrRegister = 'register'">去注册<i class="el-icon-arrow-right"></i></el-link>-->
-          <el-link type="info" :underline="false" style="float: right;" @click="changeLogin('register', 'registerForm')">去注册<i class="el-icon-arrow-right"></i></el-link>
+          <el-link type="info" :underline="false" style="float: right;" @click="changeLogin('register', 'registerForm')">去注册
+            <i class="el-icon-arrow-right"/></el-link>
         </el-form-item>
       </el-form>
     </div>
 <!--    注册-->
     <div class="login-content" v-show="loginOrRegister === 'register'">
-      <i class="el-icon-close close-icon" title="关闭" @click="closePanel"></i>
+      <i class="el-icon-close close-icon" title="关闭" @click="closePanel"/>
       <h4 class="title">注册</h4>
       <el-form :model="registerForm" ref="registerForm" :rules="rulesRegister" status-icon>
         <el-form-item prop="username">
-          <el-input type="text" placeholder="用户名" v-model="registerForm.username"></el-input>
+          <el-input type="text" placeholder="用户名" v-model="registerForm.username"/>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" placeholder="密码" v-model="registerForm.password" ></el-input>
+          <el-input type="password" placeholder="密码" v-model="registerForm.password"/>
         </el-form-item>
         <el-form-item prop="rePassword">
-          <el-input type="password" placeholder="重复密码" v-model="registerForm.rePassword"></el-input>
+          <el-input type="password" placeholder="重复密码" v-model="registerForm.rePassword"/>
         </el-form-item>
         <el-form-item prop="name">
-          <el-input type="text" placeholder="姓名" v-model="registerForm.name"></el-input>
+          <el-input type="text" placeholder="姓名" v-model="registerForm.name"/>
         </el-form-item>
         <el-form-item style="text-align: center">
           <el-button type="primary" style="width: 100%" @click="toRegister('registerForm')" plain>注册</el-button>
-          <el-link type="info" :underline="false" style="float: right;" @click="changeLogin('login', 'loginForm')">去登录<i class="el-icon-arrow-right"></i></el-link>
+          <el-link type="info" :underline="false" style="float: right;" @click="changeLogin('login', 'loginForm')">去登录<i class="el-icon-arrow-right"/></el-link>
         </el-form-item>
       </el-form>
     </div>
@@ -51,6 +52,8 @@ export default {
     let validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
+      } else if (value.indexOf('') !== -1) {
+        callback(new Error('密码不能包含空格'))
       } else {
         if (this.rulesRegister.rePassword !== '') {
           this.$refs.registerForm.validateField('rePassword')
@@ -68,9 +71,9 @@ export default {
       }
     }
     let validateUsername = (rule, value, callback) => {
-      if (value === ' ') {
+      if (value === '') {
         callback(new Error('用户名不能为空'))
-      } else if (value.indexOf(' ') !== -1) {
+      } else if (value.indexOf('') !== -1) {
         callback(new Error('用户名不能包含空格'))
       } else {
         callback()
@@ -145,7 +148,6 @@ export default {
       this.$refs[formRules].validate((valid) => {
         if (valid) {
           this.$request.postRegister(this.registerForm).then(res => {
-            console.log('zhuce')
             if (res.retcode === 200) {
               // 注册成功
               this.$message({
@@ -169,6 +171,10 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+    },
+    toSubmit () {
+      if (this.loginOrRegister === 'login') this.toLogin('loginForm')
+      else if (this.loginOrRegister === 'register') this.toRegister('registerForm')
     }
   }
 }

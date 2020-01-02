@@ -13,6 +13,9 @@ module.exports = {
     var password = reqJson.password;
 
     pool.getConnection(function (err, connection) {
+      if (err) {
+        req.send({success: false, msg: err.message, retcode: 400})
+      }
       // 1. 判断该账号是否存在
       var $sql = 'select * from user where username = ? and if_deleted = 0'
       let result = {}
@@ -32,6 +35,9 @@ module.exports = {
         } else { // 2. 账号存在，进行密码判断
           var $sql = `select * from user where username = ? `
           connection.query($sql, [username], function (err, resultDataS) {
+            if (err) {
+              req.send({success: false, msg: err.message, retcode: 400})
+            }
             var temp = resultDataS[0].password; // 取得数据库查询字段值
             if (temp === password) {
               var tokenor = { username, password }
@@ -67,9 +73,15 @@ module.exports = {
     var password = reqJson.password;
     var name = reqJson.name;
     pool.getConnection(function (err, connection) {
+      if (err) {
+        req.send({success: false, msg: err.message, retcode: 400})
+      }
       // 先判断账号是否存在
       var $sql = 'select *  from user where username = ?';
       connection.query($sql, [username], function(error, result) {
+        if (error) {
+          req.send({success: false, msg: err.message, retcode: 400})
+        }
         var resultJson = result;
         if (resultJson.length !==0) {
           result = {

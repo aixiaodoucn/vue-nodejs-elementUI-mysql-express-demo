@@ -9,6 +9,7 @@ import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 import './assets/theme/index.css'
 import './assets/css/pbu.css'
+import './assets/css/pop.styl'
 import store from './store'
 
 import Api from '@/api'
