@@ -52,7 +52,7 @@ export default {
     let validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
-      } else if (value.indexOf('') !== -1) {
+      } else if (value.indexOf(' ') !== -1) {
         callback(new Error('密码不能包含空格'))
       } else {
         if (this.rulesRegister.rePassword !== '') {
@@ -71,10 +71,13 @@ export default {
       }
     }
     let validateUsername = (rule, value, callback) => {
+      let userRule = /^[a-zA-Z0-9_]{1,20}$/
       if (value === '') {
         callback(new Error('用户名不能为空'))
-      } else if (value.indexOf('') !== -1) {
+      } else if (value.indexOf(' ') !== -1) {
         callback(new Error('用户名不能包含空格'))
+      } else if (!userRule.test(value)) {
+        callback(new Error('用户名只能是数字字母下划线'))
       } else {
         callback()
       }
