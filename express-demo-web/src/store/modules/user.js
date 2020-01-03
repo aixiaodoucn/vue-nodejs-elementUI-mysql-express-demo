@@ -57,8 +57,11 @@ const user = {
     },
     // 所有用户列表
     handleUserList ({commit}, {username = '', name = '', currentPage = 1, pageSize = 10}) {
-      Api.getUserList({username, name, pageNo: currentPage, pageSize}).then(res => {
-        if (res.retcode === 200) commit('setUserList', {userList: res.userList, totalCount: res.totalCount})
+      return new Promise((resolve, reject) => {
+        Api.getUserList({username, name, pageNo: currentPage, pageSize}).then(res => {
+          if (res.retcode === 200) commit('setUserList', {userList: res.userList, totalCount: res.totalCount})
+          resolve(res)
+        })
       })
     },
     // 该登录用户的基本信息

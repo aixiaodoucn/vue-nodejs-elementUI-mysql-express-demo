@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import {getToken} from '@/utils/auth'
 import * as tools from './tools'
+import router from '../router'
 // eslint-disable-next-line import/no-duplicates
 // import {getClientIp, getDeviceId} from './tools'
 // import {rsaEncryptWithString} from './encrypt'
@@ -46,6 +47,7 @@ axios.interceptors.response.use(
           case 1001: // 未登录时跳转到登录页
             store.dispatch('user/logout')
               .then(res => {
+                router.push({name: 'welcome'})
                 window.location.reload()
               })
             break
