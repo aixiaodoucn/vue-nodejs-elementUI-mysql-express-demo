@@ -1,7 +1,7 @@
 # vue-nodejs-elementUI-mysql-express-demo
 vue+nodejs前后端分离项目，学习使用，包含基本的入门操作。包括从开始创建项目到最后部署的实现过程及过程中遇到的一些问题整理。
 
-项目预览地址： [预览地址 -- aixiaodou.cn](http://www.aixiaodou.cn:8080)
+项目预览地址： [预览地址 -- aixiaodou.cn](http://www.aixiaodou.cn)
 
 评论讨论地址：[ 个人博客 -- https://blog.csdn.net/qq_32442967/article/details/103459148 ]( https://blog.csdn.net/qq_32442967/article/details/103459148 )
 
